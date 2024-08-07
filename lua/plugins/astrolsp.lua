@@ -9,29 +9,7 @@ return {
   ---@type AstroLSPOpts
   opts = {
     -- enable servers that you already have installed without mason
-    servers = {
-      "bashls",
-      "biome",
-      -- "dagger",
-      "denols",
-      "docker_compose_language_service",
-      "dockerls",
-      -- "efm",
-      "gopls",
-      "lua_ls",
-      "nil_ls",
-      "pyright",
-      "ruff",
-      "ruff_lsp",
-      -- "svelte",
-      "tailwindcss",
-      "terraformls",
-      -- "tflint",
-      -- "tsserver",
-      -- "volar",
-      "yamlls",
-      "nixd",
-    },
+    servers = _G.already_installed,
     -- Configuration table of features provided by AstroLSP
     features = {
       autoformat = true, -- enable or disable auto formatting on start

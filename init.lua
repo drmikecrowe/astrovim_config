@@ -15,5 +15,35 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+local my_servers = {
+  "bashls",
+  "biome",
+  -- "dagger",
+  "denols",
+  "docker_compose_language_service",
+  "dockerls",
+  -- "efm",
+  "gopls",
+  "lua_ls",
+  "nil_ls",
+  "pyright",
+  "ruff",
+  "ruff_lsp",
+  -- "svelte",
+  "tailwindcss",
+  "terraformls",
+  -- "tflint",
+  -- "tsserver",
+  -- "volar",
+  "yamlls",
+}
+if vim.env.NIX_STORE then
+  _G.ensure_installed = {}
+  _G.already_installed = my_servers
+else
+  _G.ensure_installed = my_servers
+  _G.already_installed = {}
+end
+
 require "lazy_setup"
 require "polish"
