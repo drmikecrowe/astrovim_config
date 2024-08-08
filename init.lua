@@ -19,7 +19,7 @@ local my_servers = {
   "bashls",
   "biome",
   -- "dagger",
-  "denols",
+  -- "denols",
   "docker_compose_language_service",
   "dockerls",
   -- "efm",
@@ -33,7 +33,7 @@ local my_servers = {
   "tailwindcss",
   "terraformls",
   -- "tflint",
-  -- "tsserver",
+  "tsserver",
   -- "volar",
   "yamlls",
 }
@@ -47,3 +47,16 @@ end
 
 require "lazy_setup"
 require "polish"
+
+vim.api.nvim_create_augroup("neotree_autoopen", { clear = true })
+vim.api.nvim_create_autocmd("BufRead", { -- Changed from BufReadPre
+  desc = "Open neo-tree on enter",
+  group = "neotree_autoopen",
+  once = true,
+  callback = function()
+    if not vim.g.neotree_opened then
+      vim.cmd "Neotree show"
+      vim.g.neotree_opened = true
+    end
+  end,
+})

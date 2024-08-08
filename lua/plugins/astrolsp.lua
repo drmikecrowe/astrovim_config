@@ -41,12 +41,12 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      -- lua_ls = {
-      --   formatter = { command = "stylua"},
+      denols = {
+        autostart = false,
+      },
+      -- nil_ls = {
+      --     formatter = { command = "alejandra"},
       -- },
-                -- nil_ls = {
-                --     formatter = { command = "alejandra"},
-                -- },
       -- },
     },
     -- customize how language servers are attached
@@ -57,10 +57,12 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      tsserver = function(_, opts) require("typescript").setup { server = opts } end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
       -- first key is the `augroup` to add the auto commands to (:h augroup)
+      -- vim.api.nvim_create_augroup("neotree_autoopen", { clear = true })
       lsp_codelens_refresh = {
         -- Optional condition to create/delete auto command group
         -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
