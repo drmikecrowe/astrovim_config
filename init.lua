@@ -17,7 +17,7 @@ end
 
 local my_servers = {
   "bashls",
-  "biome",
+  -- "biome",
   -- "dagger",
   -- "denols",
   "docker_compose_language_service",
